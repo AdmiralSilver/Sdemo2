@@ -1,5 +1,6 @@
 package com.example.demo2.controller;
 
+import com.example.demo2.dao.UserRepos;
 import com.example.demo2.model.User;
 import jakarta.annotation.PostConstruct;
 import org.springframework.boot.web.client.RestTemplateBuilder;
@@ -15,14 +16,16 @@ import java.util.List;
 @Controller
 public class democontroller {
 
+    private UserRepos userRepos;
+
     private List<User> users;
     private String estAge;
     private String[] ages;
     @PostConstruct
     private void loadUsers() {
-        User u1 = new User(29, "Ulrik", "Fagerberg");
-        User u2 = new User(40, "Erik", "F");
-        User u3 = new User(40, "Jørgen", "V");
+        User u1 = new User(29, "Ulrik", "Fagerberg", "secure");
+        User u2 = new User(40, "Erik", "F", "secure");
+        User u3 = new User(40, "Jørgen", "V", "secure");
 
         users = new ArrayList<User>();
 
