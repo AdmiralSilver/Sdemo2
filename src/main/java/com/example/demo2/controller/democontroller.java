@@ -17,6 +17,7 @@ public class democontroller {
 
     private List<User> users;
     private String estAge;
+    private String[] ages;
     @PostConstruct
     private void loadUsers() {
         User u1 = new User(29, "Ulrik", "Fagerberg");
@@ -46,6 +47,15 @@ public class democontroller {
         // send API request to get age from api.agify.io
         // i.e. for Ulrik -> https://api.agify.io?name=ulrik
         // and store the result in the estAge variable
+        // send the request using the RestTemplate class for all users
+        // and store the result in and array of strings
+        ages = new String[this.users.size()];
+        String name;
+        for (User user : users) {
+            AgeService ageService = new AgeService(new RestTemplateBuilder());
+            name = ageService.getAge(user.getFirstName());
+            ages[users.indexOf(user)] = name.substring(7, 9);
+        }
         AgeService ageService = new AgeService(new RestTemplateBuilder());
         String age = ageService.getAge("ulrik");
         System.out.println(age);
@@ -61,7 +71,7 @@ public class democontroller {
     public String hello(Model theModel) {
 
         theModel.addAttribute("users", users);
-        theModel.addAttribute("estAge", estAge);
+        theModel.addAttribute("ages", ages);
         return "hello";
     }
 }

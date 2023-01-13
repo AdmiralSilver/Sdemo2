@@ -22,8 +22,9 @@
                 <td th:text="${user.getLastName()}"/>
                 <td th:text="${user.getAge()}"/>
             </tr>
+        <tr th:each="ages : ${ages}">
+            <td th:text="${ages}"/>
         </tbody>
     </table>
-<p th:text="'Estimated age of Ulrik: ' + ${estAge}" />
 </body>
 </html>
