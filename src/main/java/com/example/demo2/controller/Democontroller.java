@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Controller
-public class democontroller {
+public class Democontroller {
 
     private List<User> users;
 
@@ -20,7 +20,7 @@ public class democontroller {
         User u2 = new User(40, "Erik", "F");
         User u3 = new User(40, "Jørgen", "V");
 
-        users = new ArrayList<User>();
+        users = new ArrayList<>();
 
         users.add(u1);
         users.add(u2);
