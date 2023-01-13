@@ -18,7 +18,7 @@ public class democontroller {
     private List<User> users;
     private String estAge;
     private String[] ages;
-    @PostConstruct
+
     private void loadUsers() {
         User u1 = new User(29, "Ulrik", "Fagerberg");
         User u2 = new User(40, "Erik", "F");
@@ -44,6 +44,7 @@ public class democontroller {
     }
     @PostConstruct
     private void loadAge() {
+        loadUsers();
         // send API request to get age from api.agify.io
         // i.e. for Ulrik -> https://api.agify.io?name=ulrik
         // and store the result in the estAge variable
